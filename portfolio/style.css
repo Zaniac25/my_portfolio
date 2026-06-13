@@ -1378,6 +1378,17 @@ section {
   padding: var(--space-20);
 }
 
+.project-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background: rgba(177, 108, 234, 0.2);
+  border: 1px solid var(--neon-purple);
+  color: var(--neon-purple);
+  font-size: 0.8rem;
+}
+
 .project-title {
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-8);
@@ -1387,6 +1398,7 @@ section {
   color: var(--color-text-secondary);
   margin-bottom: var(--space-16);
   line-height: 1.6;
+  min-height: 120px;
 }
 
 .project-tags {
@@ -1761,6 +1773,16 @@ section {
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .project-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .project-card {
+    height: 100%;
   }
 
   .contact-content {
