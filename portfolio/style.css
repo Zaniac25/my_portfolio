@@ -947,6 +947,13 @@ body {
   max-width: 600px;
 }
 
+.hero-description{
+    max-width: 900px;
+    margin: 25px auto;
+    line-height: 1.8;
+    text-align: center;
+}
+
 .hero-cta {
   display: flex;
   gap: var(--space-16);
@@ -1110,18 +1117,19 @@ section {
   margin-bottom: var(--space-20);
 }
 
-.avatar-placeholder {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  font-size: 3rem;
-  color: white;
-  box-shadow: 0 8px 32px rgba(177, 108, 234, 0.4);
+.avatar-placeholder{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#a855f7,#ec4899);
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 auto 25px;
+    box-shadow: 0 0 30px rgba(168,85,247,0.4);
 }
 
 .about-text h3 {
@@ -1133,6 +1141,12 @@ section {
   color: var(--neon-purple);
   font-weight: var(--font-weight-medium);
   margin-bottom: var(--space-16);
+  line-height:1.8;
+}
+
+.about-text p:last-of-type{
+    line-height:1.9;
+    color: var(--color-text);
 }
 
 .skills-container {
@@ -1162,6 +1176,35 @@ section {
   justify-content: space-between;
   margin-bottom: var(--space-8);
   font-weight: var(--font-weight-medium);
+}
+
+.skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+}
+
+.skill-tag{
+    padding:8px 14px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    font-size:0.9rem;
+    transition:all .3s ease;
+}
+
+.skill-category{
+    margin-bottom: 24px;
+}
+
+.skill-category h4{
+    margin-bottom: 12px;
+}
+
+.skill-tag:hover{
+    transform:translateY(-2px);
+    border-color:#a855f7;
 }
 
 .skill-bar {
@@ -1725,6 +1768,7 @@ section {
     width: 80px;
     height: 80px;
     font-size: 2rem;
+    letter-spacing:2px;
   }
 }
 
