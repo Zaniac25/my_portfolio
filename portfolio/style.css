@@ -1539,6 +1539,81 @@ section {
   }
 }
 
+/* Education */
+.education {
+  padding: 120px 0;
+}
+
+.education-timeline-horizontal {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 80px;
+  gap: 30px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 15px;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  z-index: 0;
+}
+
+.edu-milestone {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  z-index: 1;
+}
+
+.edu-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  margin: 0 auto 25px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.edu-milestone h3 {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.edu-milestone h4 {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.edu-milestone p {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.edu-milestone span {
+  color: var(--neon-purple);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .education-timeline-horizontal {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-line {
+    display: none;
+  }
+
+  .edu-milestone {
+    margin-bottom: 40px;
+  }
+}
+
 /* Contact Section */
 .contact-content {
   display: grid;
