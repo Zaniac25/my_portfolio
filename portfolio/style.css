@@ -1629,6 +1629,69 @@ section {
   }
 }
 
+/* Certification Section */
+.certifications {
+  padding: 120px 0;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.cert-card {
+  text-align: center;
+  padding: 35px 25px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cert-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.25);
+}
+
+.cert-card i {
+  font-size: 2rem;
+  color: var(--neon-pink);
+  margin-bottom: 20px;
+}
+
+.cert-card h3 {
+  margin-bottom: 12px;
+}
+
+.cert-card p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 10px;
+}
+
+.cert-card span {
+  color: var(--neon-purple);
+  font-weight: 600;
+}
+
+.cert-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  border: 1px solid var(--neon-purple);
+  transition: 0.3s ease;
+  margin-top: auto;
+}
+
+.cert-btn:hover {
+  background: rgba(168, 85, 247, 0.15);
+  transform: translateY(-2px);
+}
+
 /* Contact Section */
 .contact-content {
   display: grid;
