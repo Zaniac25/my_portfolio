@@ -1577,6 +1577,20 @@ section {
   background: linear-gradient(135deg, #a855f7, #ec4899);
   margin: 0 auto 25px;
   box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  transition: all 0.3s ease;
+}
+
+.edu-milestone:hover .edu-dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 35px rgba(236, 72, 153, 0.8);
+}
+
+.edu-milestone {
+  transition: all 0.3s ease;
+}
+
+.edu-milestone:hover {
+  transform: translateY(-8px);
 }
 
 .edu-milestone h3 {
@@ -1595,8 +1609,9 @@ section {
 }
 
 .edu-milestone span {
-  color: var(--neon-purple);
-  font-weight: 600;
+  color: var(--neon-pink);
+  font-weight: 700;
+  font-size: 1.05rem;
 }
 
 @media (max-width: 768px) {
