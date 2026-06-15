@@ -2013,3 +2013,18 @@ section {
   opacity: 1;
   transform: translateX(0);
 }
+
+/* Custom cursor */
+.cursor-ring {
+  position: fixed; width: 30px; height: 30px;
+  border: 2px solid var(--neon-purple); border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease; pointer-events: none; z-index: 9999;
+}
+.cursor-dot {
+  position: fixed; width: 6px; height: 6px;
+  background: var(--neon-pink); border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; z-index: 9999;
+}
+* { cursor: none; }
