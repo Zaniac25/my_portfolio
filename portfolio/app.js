@@ -52,6 +52,37 @@ function initializeProjectFilter() {
   });
 }
 
+// Typewriter Effect
+const roles = [
+  "AI-powered Apps",
+  "Data Dashboards",
+  "Computer Vision Systems",
+  "Full-Stack Web Apps",
+];
+let roleIndex = 0,
+  charIndex = 0,
+  isDeleting = false;
+
+function typeWriter() {
+  const current = roles[roleIndex];
+  const el = document.getElementById("typewriter");
+  if (!el) return;
+  el.textContent = isDeleting
+    ? current.substring(0, charIndex--)
+    : current.substring(0, charIndex++);
+  if (!isDeleting && charIndex === current.length + 1) {
+    isDeleting = true;
+    setTimeout(typeWriter, 1500);
+    return;
+  }
+  if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+  }
+  setTimeout(typeWriter, isDeleting ? 50 : 100);
+}
+typeWriter();
+
 // Timeline Animation
 function initializeTimeline() {
   const observer = new IntersectionObserver(
