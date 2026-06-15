@@ -1,744 +1,462 @@
 <!doctype html>
-<html lang="en" data-color-scheme="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>M Tarini Prasad - Portfolio</title>
+    <title>M Tarini Prasad — Software Engineer & AI Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
   </head>
   <body>
+    <!-- Custom cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <div class="loader-logo">MTP</div>
+        <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+        <div class="loader-text" id="loaderText">Initializing...</div>
+      </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <span class="gradient-text">MTP</span>
-        </div>
-        <ul class="nav-menu">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+    <nav class="navbar" id="navbar">
+      <div class="nav-logo">
+        <span class="logo-bracket">&lt;</span>MTP<span class="logo-bracket">/&gt;</span>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link" data-section="home"><span class="nav-num">01.</span> Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about"><span class="nav-num">02.</span> About</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects"><span class="nav-num">03.</span> Projects</a></li>
+        <li><a href="#experience" class="nav-link" data-section="experience"><span class="nav-num">04.</span> Experience</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact"><span class="nav-num">05.</span> Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="resume.pdf" download="MTP_Resume.pdf" class="nav-resume-btn">Resume <i class="fas fa-arrow-down"></i></a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-      <div class="hero-background">
-        <iframe
-          src="https://my.spline.design/portal-d6e8e9f0d0a8fb6c59fe9725c5e6b3b2/"
-          frameborder="0"
-          width="100%"
-          height="100%"
-          allow="fullscreen"
-        >
-        </iframe>
+    <section id="home" class="hero">
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-content">
+        <div class="hero-greeting">
+          <span class="mono">$ whoami</span>
+        </div>
+        <h1 class="hero-name">
+          <span class="name-line" id="heroName"></span><span class="cursor-blink">|</span>
+        </h1>
+        <div class="hero-roles">
+          <span class="role-prefix mono">→</span>
+          <span class="role-cycle" id="roleCycle">Software Engineer</span>
+        </div>
+        <p class="hero-bio">
+          Building intelligent systems at the intersection of <em>Python</em>, <em>Computer Vision</em>, and <em>AI</em>. I turn data into insight and code into impact.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">View Projects <i class="fas fa-arrow-right"></i></a>
+          <a href="resume.pdf" download="MTP_Resume.pdf" class="btn-ghost" id="resumeDownloadBtn"><i class="fas fa-download"></i> Resume</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Projects</span></div>
+          <div class="stat-div"></div>
+          <div class="stat"><span class="stat-num">4</span><span class="stat-label">Internships</span></div>
+          <div class="stat-div"></div>
+          <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Certificates</span></div>
+        </div>
       </div>
-      <div class="hero-overlay">
-        <div class="hero-content">
-          <h1 class="hero-title gradient-text">M Tarini Prasad</h1>
-          <p class="hero-subtitle">
-            I build <span id="typewriter"></span><span class="blink">|</span>
-          </p>
-
-          <p class="hero-description">
-            Building intelligent software solutions using Python, Data
-            Analytics, Computer Vision, and AI. Passionate about developing
-            scalable applications, automation systems, and data-driven solutions
-            that solve real-world problems.
-          </p>
-          <div class="hero-cta">
-            <button class="btn-primary">View Projects</button>
-
-            <a href="resume.pdf" download class="btn-secondary">
-              Download Resume
-            </a>
-          </div>
-        </div>
-        <div class="scroll-indicator">
-          <div class="scroll-arrow">
-            <i class="fas fa-chevron-down"></i>
-          </div>
-        </div>
+      <div class="hero-scroll-indicator">
+        <div class="scroll-line"></div>
+        <span class="mono">scroll</span>
       </div>
     </section>
-    
 
     <!-- About Section -->
-    <section id="about" class="about-section">
+    <section id="about" class="section about-section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title gradient-text">
-            <i class="fas fa-user"></i>
-            About Me
-          </h2>
-          <p class="section-subtitle">
-            Software Engineering, Data Analytics, and AI-driven solutions
-          </p>
-        </div>
+        <div class="section-label mono">02. about_me</div>
+        <h2 class="section-title">Who I Am</h2>
 
-        <div class="about-content">
-          <div class="about-info glass-card">
-            <div class="about-avatar">
-              <div class="about-avatar">
-                <img
-                  src="images/profile.jpeg"
-                  alt="M Tarini Prasad"
-                  class="profile-photo"
-                />
+        <div class="about-grid">
+          <div class="about-text-block reveal">
+            <div class="about-avatar-card">
+              <div class="avatar-glow"></div>
+              <div class="avatar-img">
+                <img src="images/profile.jpeg" alt="M Tarini Prasad" onerror="this.parentElement.innerHTML='<div class=\'avatar-fallback\'>MTP</div>'" />
+              </div>
+              <div class="avatar-badge">
+                <span class="badge-dot"></span>
+                <span>Available for opportunities</span>
               </div>
             </div>
-            <div class="about-text">
-              <h3>M Tarini Prasad</h3>
-              <p>Software Engineer | Data Analytics | AI Applications</p>
-              <p>
-                Software Engineer and Data Analytics enthusiast with experience
-                building AI-powered applications, analytics dashboards, computer
-                vision systems, and full-stack web solutions. Skilled in Python,
-                SQL, Django, Streamlit, OpenCV, and modern web technologies. I
-                enjoy developing intelligent systems that combine software
-                engineering, artificial intelligence, and data analytics to
-                solve real-world challenges through automation, analytics, and
-                scalable applications.
-              </p>
-            </div>
-          </div>
-
-          <div class="skills-container glass-card">
-            <h3>Skills & Technologies</h3>
-
-            <div class="skill-category">
-              <h4>Programming Languages</h4>
-
-              <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">SQL</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4>Data Analytics</h4>
-
-              <div class="skill-tags">
-                <span class="skill-tag">Pandas</span>
-                <span class="skill-tag">NumPy</span>
-                <span class="skill-tag">Matplotlib</span>
-                <span class="skill-tag">Plotly</span>
-                <span class="skill-tag">Streamlit</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4>AI & Computer Vision</h4>
-
-              <div class="skill-tags">
-                <span class="skill-tag">OpenCV</span>
-                <span class="skill-tag">MediaPipe</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">Gemini API</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4>Web Development</h4>
-
-              <div class="skill-tags">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Django</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4>Tools & Platforms</h4>
-
-              <div class="skill-tags">
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">GitHub</span>
-                <span class="skill-tag">Power BI</span>
-                <span class="skill-tag">Excel</span>
-                <span class="skill-tag">VS Code</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h4>Core Concepts</h4>
-
-              <div class="skill-tags">
-                <span class="skill-tag">Data Analytics</span>
-                <span class="skill-tag">EDA</span>
-                <span class="skill-tag">Data Cleaning</span>
-                <span class="skill-tag">Computer Vision</span>
-                <span class="skill-tag">REST APIs</span>
-                <span class="skill-tag">Prompt Engineering</span>
+            <div class="about-bio">
+              <p>I'm a final-year B.Tech CSE student at ABIT, Cuttack, passionate about building AI-powered applications, analytics platforms, and computer vision systems.</p>
+              <p>My work spans full-stack development with Django, real-time CV pipelines with OpenCV & MediaPipe, and data analytics dashboards with Streamlit. I love solving problems that sit at the intersection of software engineering and machine intelligence.</p>
+              <div class="about-links">
+                <a href="https://github.com/Zaniac25" target="_blank" class="about-link"><i class="fab fa-github"></i> Zaniac25</a>
+                <a href="https://youtube.com/TheParaglitch" target="_blank" class="about-link"><i class="fab fa-youtube"></i> TheParaglitch</a>
+                <a href="mailto:mtarini5612@gmail.com" class="about-link"><i class="fas fa-envelope"></i> mtarini5612@gmail.com</a>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Floating Tech Icons -->
-        <div class="floating-icons">
-          <div class="floating-icon" style="top: 10%; left: 10%">
-            <i class="fab fa-java"></i>
-          </div>
-          <div class="floating-icon" style="top: 20%; right: 15%">
-            <i class="fab fa-python"></i>
-          </div>
-          <div class="floating-icon" style="bottom: 30%; left: 5%">
-            <i class="fab fa-js"></i>
-          </div>
-          <div class="floating-icon" style="bottom: 20%; right: 10%">
-            <i class="fas fa-database"></i>
-          </div>
-          <div class="floating-icon" style="top: 50%; left: 20%">
-            <i class="fab fa-html5"></i>
+          <div class="skills-block reveal">
+            <div class="skills-header mono">// tech_stack</div>
+            <div class="skill-groups">
+              <div class="skill-group">
+                <div class="skill-group-label">Languages</div>
+                <div class="skill-pills">
+                  <span class="pill">Python</span>
+                  <span class="pill">Java</span>
+                  <span class="pill">JavaScript</span>
+                  <span class="pill">SQL</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-label">Data & Analytics</div>
+                <div class="skill-pills">
+                  <span class="pill">Pandas</span>
+                  <span class="pill">NumPy</span>
+                  <span class="pill">Matplotlib</span>
+                  <span class="pill">Plotly</span>
+                  <span class="pill">Streamlit</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-label">AI & Computer Vision</div>
+                <div class="skill-pills">
+                  <span class="pill accent">OpenCV</span>
+                  <span class="pill accent">MediaPipe</span>
+                  <span class="pill accent">TensorFlow</span>
+                  <span class="pill accent">Gemini API</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-label">Web & Backend</div>
+                <div class="skill-pills">
+                  <span class="pill">Django</span>
+                  <span class="pill">Flask</span>
+                  <span class="pill">React</span>
+                  <span class="pill">REST APIs</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <div class="skill-group-label">Tools</div>
+                <div class="skill-pills">
+                  <span class="pill">Git</span>
+                  <span class="pill">Power BI</span>
+                  <span class="pill">VS Code</span>
+                  <span class="pill">GitHub</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects-section">
+    <section id="projects" class="section projects-section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title gradient-text">
-            <i class="fas fa-laptop-code"></i>
-            Featured Projects
-          </h2>
-          <p class="section-subtitle">
-            Real-world software, analytics, and AI solutions built to solve
-            practical problems
-          </p>
-        </div>
+        <div class="section-label mono">03. featured_work</div>
+        <h2 class="section-title">Projects</h2>
 
-        <div class="projects-filter">
+        <div class="filter-bar">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="software">Software</button>
           <button class="filter-btn" data-filter="data">Data Analytics</button>
-          <button class="filter-btn" data-filter="ai">
-            AI & Computer Vision
-          </button>
+          <button class="filter-btn" data-filter="ai">AI & CV</button>
         </div>
 
-        <div class="projects-grid">
-          <!-- Smart Attendance System -->
-          <div
-            class="project-card glass-card"
-            data-tilt
-            data-category="software"
-          >
-            <div class="project-image">
-              <div class="project-placeholder">
-                <i class="fas fa-user-check"></i>
-              </div>
+        <div class="projects-grid" id="projectsGrid">
 
-              <div class="project-overlay">
+          <div class="project-card reveal" data-category="software">
+            <div class="project-card-inner">
+              <div class="project-top">
+                <div class="project-icon-wrap"><i class="fas fa-user-check"></i></div>
                 <div class="project-links">
-                  <a
-                    href="https://github.com/Zaniac25/smart-attendance-system"
-                    class="project-link"
-                    target="_blank"
-                  >
-                    <i class="fab fa-github"></i>
-                  </a>
+                  <a href="https://github.com/Zaniac25/smart-attendance-system" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
               </div>
-            </div>
-
-            <div class="project-content">
-              <div class="project-badge">⭐ Featured</div>
-              <h3 class="project-title">Smart Attendance System</h3>
-
-              <p class="project-description">
-                Intelligent attendance management platform using QR verification
-                and facial recognition with role-based dashboards, analytics,
-                attendance reports, correction requests, and automated email
-                notifications.
-              </p>
-
-              <div class="project-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">Django</span>
-                <span class="project-tag">OpenCV</span>
-                <span class="project-tag">REST API</span>
-                <span class="project-tag">SQLite</span>
+              <div class="project-badge-wrap"><span class="project-badge">⭐ Featured</span></div>
+              <h3 class="project-name">Smart Attendance System</h3>
+              <p class="project-desc">Intelligent attendance platform using QR verification and facial recognition with role-based dashboards, analytics reports, and automated email notifications.</p>
+              <div class="project-tech">
+                <span>Python</span><span>Django</span><span>OpenCV</span><span>SQLite</span>
               </div>
             </div>
           </div>
 
-          <!-- DataPulse Analytics Dashboard -->
-          <div class="project-card glass-card" data-tilt data-category="data">
-            <div class="project-image">
-              <div class="project-placeholder">
-                <i class="fas fa-chart-line"></i>
-              </div>
-
-              <div class="project-overlay">
+          <div class="project-card reveal" data-category="data">
+            <div class="project-card-inner">
+              <div class="project-top">
+                <div class="project-icon-wrap"><i class="fas fa-chart-line"></i></div>
                 <div class="project-links">
-                  <a
-                    href="https://github.com/Zaniac25/DataPulse"
-                    class="project-link"
-                    target="_blank"
-                  >
-                    <i class="fab fa-github"></i>
-                  </a>
+                  <a href="https://github.com/Zaniac25/DataPulse" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
               </div>
-            </div>
-
-            <div class="project-content">
-              <h3 class="project-title">DataPulse Analytics Dashboard</h3>
-
-              <p class="project-description">
-                Interactive analytics platform featuring automated data
-                cleaning, EDA, visualization, dataset health scoring, outlier
-                detection, correlation analysis, and AI-powered reporting.
-              </p>
-
-              <div class="project-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">Streamlit</span>
-                <span class="project-tag">Pandas</span>
-                <span class="project-tag">Plotly</span>
-                <span class="project-tag">Analytics</span>
+              <h3 class="project-name">DataPulse Analytics</h3>
+              <p class="project-desc">Interactive analytics platform with automated data cleaning, EDA, visualization, health scoring, outlier detection, correlation analysis, and AI-powered reporting.</p>
+              <div class="project-tech">
+                <span>Python</span><span>Streamlit</span><span>Pandas</span><span>Plotly</span>
               </div>
             </div>
           </div>
 
-          <!-- Hand Gesture System -->
-          <div class="project-card glass-card" data-tilt data-category="ai">
-            <div class="project-image">
-              <div class="project-placeholder">
-                <i class="fas fa-hand-paper"></i>
-              </div>
-
-              <div class="project-overlay">
+          <div class="project-card reveal" data-category="ai">
+            <div class="project-card-inner">
+              <div class="project-top">
+                <div class="project-icon-wrap"><i class="fas fa-hand-paper"></i></div>
                 <div class="project-links">
-                  <a
-                    href="https://github.com/Zaniac25/gesture-control-with-voice-command"
-                    class="project-link"
-                    target="_blank"
-                  >
-                    <i class="fab fa-github"></i>
-                  </a>
+                  <a href="https://github.com/Zaniac25/gesture-control-with-voice-command" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
               </div>
-            </div>
-
-            <div class="project-content">
-              <h3 class="project-title">Hand Gesture & Voice Control System</h3>
-
-              <p class="project-description">
-                Computer vision-based automation system that enables cursor
-                control, clicks, scrolling, screenshots, volume control, and
-                system actions through hand gestures and voice commands.
-              </p>
-
-              <div class="project-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">OpenCV</span>
-                <span class="project-tag">MediaPipe</span>
-                <span class="project-tag">SpeechRecognition</span>
+              <h3 class="project-name">Gesture & Voice Control</h3>
+              <p class="project-desc">Computer vision automation enabling cursor control, clicks, scrolling, screenshots, volume adjustment, and system actions through hand gestures and voice commands.</p>
+              <div class="project-tech">
+                <span>OpenCV</span><span>MediaPipe</span><span>SpeechRecognition</span>
               </div>
             </div>
           </div>
 
-          <!-- AI Assistant Chatbot -->
-          <div class="project-card glass-card" data-tilt data-category="ai">
-            <div class="project-image">
-              <div class="project-placeholder">
-                <i class="fas fa-comments"></i>
-              </div>
-              <div class="project-overlay">
+          <div class="project-card reveal" data-category="ai">
+            <div class="project-card-inner">
+              <div class="project-top">
+                <div class="project-icon-wrap"><i class="fas fa-robot"></i></div>
                 <div class="project-links">
-                  <a
-                    href="https://brossistant.streamlit.app/"
-                    class="project-link"
-                    target="_blank"
-                  >
-                    <i class="fas fa-external-link-alt"></i>
-                  </a>
-                  <a
-                    href="https://github.com/zaniac25/ai-assistant"
-                    class="project-link"
-                    target="_blank"
-                  >
-                    <i class="fab fa-github"></i>
-                  </a>
+                  <a href="https://brossistant.streamlit.app/" target="_blank" title="Live"><i class="fas fa-external-link-alt"></i></a>
+                  <a href="https://github.com/zaniac25/ai-assistant" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
               </div>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">AI Assistant Chatbot</h3>
-              <p class="project-description">
-                Intelligent chatbot built with Flask, integrated with Gemini
-                API, featuring modern UI, smooth animations, and deployed on
-                Streamlit.
-              </p>
-              <div class="project-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">Flask</span>
-                <span class="project-tag">Streamlit</span>
-                <span class="project-tag">AI</span>
+              <h3 class="project-name">AI Assistant Chatbot</h3>
+              <p class="project-desc">Intelligent chatbot built with Flask and Gemini API featuring a modern UI, smooth animations, and deployed on Streamlit for public access.</p>
+              <div class="project-tech">
+                <span>Python</span><span>Flask</span><span>Streamlit</span><span>Gemini API</span>
               </div>
             </div>
           </div>
 
-          <!-- LAD Games Website -->
-          <div
-            class="project-card glass-card"
-            data-tilt
-            data-category="software"
-          >
-            <div class="project-image">
-              <div class="project-placeholder">
-                <i class="fas fa-gamepad"></i>
-              </div>
-              <div class="project-overlay">
+          <div class="project-card reveal" data-category="software">
+            <div class="project-card-inner">
+              <div class="project-top">
+                <div class="project-icon-wrap"><i class="fas fa-gamepad"></i></div>
                 <div class="project-links">
-                  <a
-                    href="https://chaiyoz.netlify.app"
-                    class="project-link"
-                    target="_blank"
-                  >
-                    <i class="fas fa-external-link-alt"></i>
-                  </a>
-                  <a href="#" class="project-link" target="_blank">
-                    <i class="fab fa-github"></i>
-                  </a>
+                  <a href="https://chaiyoz.netlify.app" target="_blank" title="Live"><i class="fas fa-external-link-alt"></i></a>
                 </div>
               </div>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">LadGames Online</h3>
-              <p class="project-description">
-                Built and deployed a browser-based gaming platform featuring
-                online games, monetization integration, responsive design, and
-                GameMonetize connectivity.
-              </p>
-              <div class="project-tags">
-                <span class="project-tag">HTML5</span>
-                <span class="project-tag">CSS3</span>
-                <span class="project-tag">JavaScript</span>
+              <h3 class="project-name">LadGames Online</h3>
+              <p class="project-desc">Browser-based gaming platform featuring online games, monetization integration, responsive design, and GameMonetize connectivity. Deployed on Netlify.</p>
+              <div class="project-tech">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience-section">
+    <section id="experience" class="section experience-section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title gradient-text">
-            <i class="fas fa-business-time"></i>
-            Experience
-          </h2>
-          <p class="section-subtitle">
-            Internships and hands-on experience in software development, data
-            analytics, and artificial intelligence
-          </p>
-        </div>
+        <div class="section-label mono">04. career_path</div>
+        <h2 class="section-title">Experience</h2>
 
-        <div class="timeline">
-          <div class="timeline-item glass-card">
-            <div class="timeline-date">Jan 2026 – Present</div>
-            <div class="timeline-content">
-              <h3>Data Science Intern</h3>
-              <h4>SkillOTech, Bhubaneswar</h4>
-              <ul>
-                <li>
-                  Performed data analysis using Python, SQL, Pandas, and NumPy.
-                </li>
-                <li>
-                  Applied data preprocessing, cleaning, and visualization
-                  techniques for exploratory data analysis.
-                </li>
-                <li>
-                  Developed analytical workflows to extract meaningful insights
-                  from datasets.
-                </li>
-              </ul>
+        <div class="exp-layout">
+          <div class="timeline-track">
+            <div class="timeline-item reveal" data-index="0">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-date mono">Jan 2026 – Present</div>
+                <h3 class="tl-role">Data Science Intern</h3>
+                <div class="tl-company">SkillOTech · Bhubaneswar</div>
+                <ul class="tl-list">
+                  <li>Performed data analysis using Python, SQL, Pandas, and NumPy</li>
+                  <li>Applied data preprocessing, cleaning, and visualization for EDA</li>
+                  <li>Developed analytical workflows to extract insights from datasets</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal" data-index="1">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-date mono">Oct 2025 – Nov 2025</div>
+                <h3 class="tl-role">AI & Cloud Technologies Intern</h3>
+                <div class="tl-company">Edunet Foundation · AICTE-IBM SkillsBuild</div>
+                <ul class="tl-list">
+                  <li>Built an AI Meme Generator & Editor using AI-powered tools</li>
+                  <li>Worked with AI workflows and cloud-enabled development practices</li>
+                  <li>Gained practical exposure to industry-focused AI and cloud technologies</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal" data-index="2">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-date mono">Aug 2025 – Sep 2025</div>
+                <h3 class="tl-role">AI & Prompt Engineering Intern</h3>
+                <div class="tl-company">VaultOfCodes</div>
+                <ul class="tl-list">
+                  <li>Designed and optimized prompts for AI-powered systems</li>
+                  <li>Improved response accuracy and contextual understanding</li>
+                  <li>Built an AI assistant for context-aware interactions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal" data-index="3">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-date mono">Jun 2025 – Jul 2025</div>
+                <h3 class="tl-role">AI/ML Intern</h3>
+                <div class="tl-company">Internship Studio</div>
+                <ul class="tl-list">
+                  <li>Built a Face Recognition System using Python and OpenCV</li>
+                  <li>Implemented image preprocessing and classification techniques</li>
+                  <li>Applied computer vision concepts to real-world applications</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <div class="timeline-item glass-card">
-            <div class="timeline-date">Oct 2025 – Nov 2025</div>
-            <div class="timeline-content">
-              <h3>AI & Cloud Technologies Intern</h3>
-              <h4>Edunet Foundation (AICTE-IBM SkillsBuild)</h4>
-              <ul>
-                <li>
-                  Built an AI Meme Generator & Editor using AI-powered tools.
-                </li>
-                <li>
-                  Worked with AI workflows and cloud-enabled development
-                  practices.
-                </li>
-                <li>
-                  Gained practical exposure to industry-focused AI and cloud
-                  technologies.
-                </li>
-              </ul>
+          <!-- Education & Certifications sidebar -->
+          <div class="exp-sidebar">
+            <div class="sidebar-block reveal">
+              <div class="sidebar-label mono">// education</div>
+              <div class="edu-list">
+                <div class="edu-item">
+                  <div class="edu-year">2022 – 2026</div>
+                  <div class="edu-title">B.Tech (CSE)</div>
+                  <div class="edu-inst">Ajay Binay Institute of Technology, Cuttack</div>
+                </div>
+                <div class="edu-item">
+                  <div class="edu-year">2022</div>
+                  <div class="edu-title">Class XII</div>
+                  <div class="edu-inst">Kendriya Vidyalaya, Choudwar <span class="edu-score">80%</span></div>
+                </div>
+                <div class="edu-item">
+                  <div class="edu-year">2020</div>
+                  <div class="edu-title">Class X</div>
+                  <div class="edu-inst">Guru Nanak Public School, Cuttack <span class="edu-score">86%</span></div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="timeline-item glass-card">
-            <div class="timeline-date">Aug 2025 – Sept 2025</div>
-            <div class="timeline-content">
-              <h3>AI & Prompt Engineering Intern</h3>
-              <h4>VaultOfCodes</h4>
-              <ul>
-                <li>Designed and optimized prompts for AI-powered systems.</li>
-                <li>
-                  Improved response accuracy and contextual understanding.
-                </li>
-                <li>Built an AI assistant for context-aware interactions.</li>
-              </ul>
+            <div class="sidebar-block reveal">
+              <div class="sidebar-label mono">// certifications</div>
+              <div class="cert-list">
+                <a href="certificates/skillotech.pdf" target="_blank" class="cert-item">
+                  <div class="cert-icon"><i class="fas fa-chart-line"></i></div>
+                  <div class="cert-info">
+                    <div class="cert-title">Data Science Internship</div>
+                    <div class="cert-org">SkillOTech · 2026</div>
+                  </div>
+                  <i class="fas fa-external-link-alt cert-arrow"></i>
+                </a>
+                <a href="certificates/edunet.pdf" target="_blank" class="cert-item">
+                  <div class="cert-icon"><i class="fas fa-cloud"></i></div>
+                  <div class="cert-info">
+                    <div class="cert-title">AI & Cloud Technologies</div>
+                    <div class="cert-org">Edunet / AICTE-IBM · 2025</div>
+                  </div>
+                  <i class="fas fa-external-link-alt cert-arrow"></i>
+                </a>
+                <a href="certificates/vaultofcodes.pdf" target="_blank" class="cert-item">
+                  <div class="cert-icon"><i class="fas fa-robot"></i></div>
+                  <div class="cert-info">
+                    <div class="cert-title">AI & Prompt Engineering</div>
+                    <div class="cert-org">VaultOfCodes · 2025</div>
+                  </div>
+                  <i class="fas fa-external-link-alt cert-arrow"></i>
+                </a>
+                <a href="certificates/internship_studio.pdf" target="_blank" class="cert-item">
+                  <div class="cert-icon"><i class="fas fa-brain"></i></div>
+                  <div class="cert-info">
+                    <div class="cert-title">AI/ML Internship</div>
+                    <div class="cert-org">Internship Studio · 2025</div>
+                  </div>
+                  <i class="fas fa-external-link-alt cert-arrow"></i>
+                </a>
+              </div>
             </div>
-          </div>
-
-          <div class="timeline-item glass-card">
-            <div class="timeline-date">Jun 2025 – Jul 2025</div>
-            <div class="timeline-content">
-              <h3>AI/ML Intern</h3>
-              <h4>Internship Studio</h4>
-              <ul>
-                <li>
-                  Built a Face Recognition System using Python and OpenCV.
-                </li>
-                <li>
-                  Implemented image preprocessing and classification techniques.
-                </li>
-                <li>
-                  Applied computer vision concepts to real-world applications.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="education">
-      <div class="container">
-        <h2 class="section-title gradient-text">
-          <i class="fas fa-graduation-cap"></i>
-          Education
-        </h2>
-
-        <p class="section-subtitle">
-          Academic journey and educational background
-        </p>
-
-        <div class="education-timeline-horizontal">
-          <div class="timeline-line"></div>
-
-          <div class="edu-milestone">
-            <div class="edu-dot"></div>
-            <h3>Class X</h3>
-            <h4>Guru Nanak Public School</h4>
-            <p>2020 • Cuttack</p>
-            <span>Score: 86%</span>
-          </div>
-
-          <div class="edu-milestone">
-            <div class="edu-dot"></div>
-            <h3>Class XII</h3>
-            <h4>Kendriya Vidyalaya</h4>
-            <p>2022 • Choudwar</p>
-            <span>Score: 80%</span>
-          </div>
-
-          <div class="edu-milestone">
-            <div class="edu-dot"></div>
-            <h3>B.Tech (CSE)</h3>
-            <h4>Ajay Binay Institute of Technology</h4>
-            <p>2022 – 2026</p>
-            <span>ABIT, Cuttack</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certification Section -->
-    <section id="certifications" class="certifications">
-      <div class="container">
-        <h2 class="section-title gradient-text">
-          <i class="fas fa-certificate"></i>
-          Certifications
-        </h2>
-
-        <p class="section-subtitle">
-          Professional certifications and internship achievements
-        </p>
-
-        <div class="cert-grid">
-          <div class="cert-card glass-card">
-            <i class="fas fa-chart-line"></i>
-            <h3>Data Science Internship</h3>
-            <p>SkillOTech</p>
-            <span>2026</span>
-            <a
-              href="certificates/skillotech.pdf"
-              target="_blank"
-              class="cert-btn"
-            >
-              View Certificate
-            </a>
-          </div>
-
-          <div class="cert-card glass-card">
-            <i class="fas fa-cloud"></i>
-            <h3>AI & Cloud Technologies</h3>
-            <p>Edunet Foundation (AICTE-IBM SkillsBuild)</p>
-            <span>2025</span>
-            <a href="certificates/edunet.pdf" target="_blank" class="cert-btn">
-              View Certificate
-            </a>
-          </div>
-
-          <div class="cert-card glass-card">
-            <i class="fas fa-robot"></i>
-            <h3>AI & Prompt Engineering</h3>
-            <p>VaultOfCodes</p>
-            <span>2025</span>
-            <a
-              href="certificates/vaultofcodes.pdf"
-              target="_blank"
-              class="cert-btn"
-            >
-              View Certificate
-            </a>
-          </div>
-
-          <div class="cert-card glass-card">
-            <i class="fas fa-brain"></i>
-            <h3>AI/ML Internship</h3>
-            <p>Internship Studio</p>
-            <span>2025</span>
-            <a
-              href="certificates/internship_studio.pdf"
-              target="_blank"
-              class="cert-btn"
-            >
-              View Certificate
-            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="section contact-section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title gradient-text">Get In Touch</h2>
-          <p class="section-subtitle">
-            Let's collaborate on your next amazing project
-          </p>
-        </div>
+        <div class="section-label mono">05. get_in_touch</div>
+        <h2 class="section-title">Contact</h2>
 
-        <div class="contact-content">
-          <div class="contact-form-container glass-card">
-            <form class="contact-form" id="contactForm">
-              <div class="form-group">
-                <label for="name" class="form-label">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="form-control glow-input"
-                  required
-                />
+        <div class="contact-grid">
+          <div class="contact-left reveal">
+            <p class="contact-intro">I'm currently open to new opportunities. Whether it's a project, internship, or just a chat about AI and software — my inbox is open.</p>
+            <div class="contact-items">
+              <div class="contact-row">
+                <div class="contact-row-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <div class="contact-row-label">Email</div>
+                  <a href="mailto:mtarini5612@gmail.com" class="contact-row-value">mtarini5612@gmail.com</a>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="email" class="form-label">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-control glow-input"
-                  required
-                />
+              <div class="contact-row">
+                <div class="contact-row-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                  <div class="contact-row-label">Phone</div>
+                  <span class="contact-row-value">+91 9938406551</span>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="subject" class="form-label">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  class="form-control glow-input"
-                  required
-                />
+              <div class="contact-row">
+                <div class="contact-row-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                  <div class="contact-row-label">Location</div>
+                  <span class="contact-row-value">Cuttack, Odisha, India</span>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="message" class="form-label">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  class="form-control glow-input"
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                class="btn-primary btn-glow btn--full-width"
-              >
-                <span>Send Message</span>
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </form>
+            </div>
+            <div class="social-row">
+              <a href="https://github.com/Zaniac25" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+              <a href="https://youtube.com/TheParaglitch" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
+              <a href="#" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a>
+            </div>
           </div>
 
-          <div class="contact-info">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
+          <div class="contact-form-wrap reveal">
+            <form class="contact-form" id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label mono">name</label>
+                  <input type="text" name="name" class="form-control" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label mono">email</label>
+                  <input type="email" name="email" class="form-control" placeholder="your@email.com" required />
+                </div>
               </div>
-              <div class="contact-details">
-                <h4>Email</h4>
-                <p>mtarini5612@gmail.com</p>
+              <div class="form-group">
+                <label class="form-label mono">subject</label>
+                <input type="text" name="subject" class="form-control" placeholder="What's this about?" required />
               </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-phone"></i>
+              <div class="form-group">
+                <label class="form-label mono">message</label>
+                <textarea name="message" rows="5" class="form-control" placeholder="Tell me more..." required></textarea>
               </div>
-              <div class="contact-details">
-                <h4>Phone</h4>
-                <p>+91 9938406551</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-details">
-                <h4>Location</h4>
-                <p>Cuttack, India</p>
-              </div>
-            </div>
+              <button type="submit" class="btn-primary btn-full">
+                Send Message <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -747,54 +465,29 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <span class="gradient-text">M Tarini Prasad</span>
+        <div class="footer-inner">
+          <div class="footer-logo mono">&lt;MTP /&gt;</div>
+          <p class="footer-copy">© 2025 M Tarini Prasad. Designed & Built with ♥</p>
+          <div class="footer-socials">
+            <a href="https://github.com/Zaniac25" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://youtube.com/TheParaglitch" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
           </div>
-          <div class="social-links">
-            <a
-              href="https://github.com/yourusername"
-              class="social-link"
-              target="_blank"
-            >
-              <i class="fab fa-github"></i>
-            </a>
-            <a
-              href="https://youtube.com/TheParaglitch"
-              class="social-link"
-              target="_blank"
-            >
-              <i class="fab fa-youtube"></i>
-            </a>
-            <a href="#" class="social-link" target="_blank">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#" class="social-link" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 M Tarini Prasad. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop">
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollToTop" aria-label="Scroll to top">
       <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- Toast Notification -->
+    <!-- Toast -->
     <div class="toast" id="toast">
-      <div class="toast-content">
-        <i class="fas fa-check-circle"></i>
-        <span>Message sent successfully!</span>
-      </div>
+      <i class="fas fa-check-circle"></i>
+      <span id="toastMsg">Message sent successfully!</span>
     </div>
 
     <script src="app.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
   </body>
 </html>
