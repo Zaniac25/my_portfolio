@@ -321,6 +321,29 @@ body {
   box-sizing: inherit;
 }
 
+/* Gradient BG */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, #04010f, #0d0628, #04010f, #001a2c);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Typography */
 h1,
 h2,
@@ -534,6 +557,16 @@ select.form-control {
 
 .form-group {
   margin-bottom: var(--space-16);
+}
+
+/* Profile photo */
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--neon-purple);
+  box-shadow: 0 0 20px rgba(177, 108, 234, 0.5);
 }
 
 /* Card component */
@@ -2016,15 +2049,26 @@ section {
 
 /* Custom cursor */
 .cursor-ring {
-  position: fixed; width: 30px; height: 30px;
-  border: 2px solid var(--neon-purple); border-radius: 50%;
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--neon-purple);
+  border-radius: 50%;
   transform: translate(-50%, -50%);
-  transition: all 0.1s ease; pointer-events: none; z-index: 9999;
+  transition: all 0.1s ease;
+  pointer-events: none;
+  z-index: 9999;
 }
 .cursor-dot {
-  position: fixed; width: 6px; height: 6px;
-  background: var(--neon-pink); border-radius: 50%;
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--neon-pink);
+  border-radius: 50%;
   transform: translate(-50%, -50%);
-  pointer-events: none; z-index: 9999;
+  pointer-events: none;
+  z-index: 9999;
 }
-* { cursor: none; }
+* {
+  cursor: none;
+}

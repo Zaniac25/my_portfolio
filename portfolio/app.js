@@ -83,6 +83,16 @@ function typeWriter() {
 }
 typeWriter();
 
+// 3D tilt
+function initializeProjectTilt() {
+  VanillaTilt.init(document.querySelectorAll(".project-card"), {
+    max: 10,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+  });
+}
+
 // Timeline Animation
 function initializeTimeline() {
   const observer = new IntersectionObserver(
