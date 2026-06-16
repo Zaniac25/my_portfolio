@@ -38,6 +38,10 @@
       </ul>
       <div class="nav-actions">
         <a href="resume.pdf" download="MTP_Resume.pdf" class="nav-resume-btn">Resume <i class="fas fa-arrow-down"></i></a>
+        <button class="theme-toggle" id="themeToggle" title="Switch to light mode" aria-label="Toggle theme">
+          <i class="fas fa-sun icon-sun"></i>
+          <i class="fas fa-moon icon-moon"></i>
+        </button>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
@@ -489,6 +493,8 @@
       <span id="toastMsg">Message sent successfully!</span>
     </div>
 
+    <!-- EmailJS keys — config.js is gitignored; copy from config.example.js -->
+    <script src="config.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
