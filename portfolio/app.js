@@ -54,6 +54,16 @@ function initCursor() {
     fx = 0,
     fy = 0;
 
+  // Hide both cursor elements when mouse leaves the browser window
+  document.addEventListener("mouseleave", () => {
+    cursor.style.opacity = "0";
+    follower.style.opacity = "0";
+  });
+  document.addEventListener("mouseenter", () => {
+    cursor.style.opacity = "1";
+    follower.style.opacity = "0.6";
+  });
+
   document.addEventListener("mousemove", (e) => {
     mx = e.clientX;
     my = e.clientY;
@@ -347,21 +357,61 @@ function initProjectCardMagnet() {
   });
 }
 
-/* ---------- CONTACT FORM ---------- */
+
 function initContactForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;
-  form.addEventListener("submit", (e) => {
+
+  // Load EmailJS SDK dynamically (no extra script tag needed in HTML)
+  if (!window.emailjs) {
+    const script = document.createElement("script");
+    script.src =
+      "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+    script.onload = () => emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    document.head.appendChild(script);
+  }
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
+
+    // Guard: warn if IDs are still placeholders
+    if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY") {
+      showToast(
+        "Contact form not configured yet — see app.js comments.",
+        "error",
+      );
+      return;
+    }
+
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    setTimeout(() => {
+
+    const templateParams = {
+      from_name: form.querySelector('[name="name"]').value.trim(),
+      from_email: form.querySelector('[name="email"]').value.trim(),
+      subject: form.querySelector('[name="subject"]').value.trim(),
+      message: form.querySelector('[name="message"]').value.trim(),
+    };
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+      );
       showToast("Message sent! I'll get back to you soon.", "success");
       form.reset();
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      showToast(
+        "Failed to send. Please email me directly at mtarini5612@gmail.com",
+        "error",
+      );
+    } finally {
       btn.disabled = false;
       btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-    }, 1500);
+    }
   });
 }
 
