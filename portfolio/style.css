@@ -39,47 +39,20 @@
   --grid-color:     rgba(139, 92, 246, 0.03);
 }
 
-/* ── LIGHT THEME ── */
-[data-theme="light"] {
-  --bg:       #f8f7ff;
-  --bg2:      #f0eeff;
-  --bg3:      #e8e4ff;
-  --surface:  #ffffff;
-  --surface2: #f3f0ff;
-  --border:   rgba(109, 40, 217, 0.12);
-  --border2:  rgba(109, 40, 217, 0.28);
-  --text:     #1e1b2e;
-  --text2:    #4a4660;
-  --text3:    #7c7a96;
+/* ── LIGHT THEME variables — see detailed overrides further below ── */
 
-  --violet:   #6d28d9;
-  --violet-l: #7c3aed;
-  --cyan:     #0891b2;
-  --cyan-l:   #06b6d4;
-
-  --canvas-opacity: 0.22;
-  --grid-color:     rgba(109, 40, 217, 0.04);
-}
-
-/* Smooth colour transitions across theme switch */
-*, *::before, *::after {
+/* Smooth colour transitions — targeted, no !important so icon transforms work */
+body, nav, section, footer, .navbar, .hero, .loader,
+.surface, .sidebar-block, .skills-block, .contact-form-wrap,
+.project-card, .cert-item, .about-avatar-card, .edu-item,
+.form-control, .pill, .filter-btn, .about-link, .social-btn,
+.nav-resume-btn, .scroll-top, .toast, .footer, .tl-content,
+.tl-dot, .timeline-track::before, .footer-inner {
   transition:
     background-color 0.35s ease,
     color            0.35s ease,
     border-color     0.35s ease,
-    box-shadow       0.35s ease !important;
-}
-/* But keep animation/transform transitions untouched */
-.reveal, .btn-primary, .btn-ghost, .project-card, .cert-item,
-.social-btn, .about-link, .filter-btn, .nav-link, .scroll-top,
-.theme-toggle {
-  transition:
-    background-color 0.35s ease,
-    color            0.35s ease,
-    border-color     0.35s ease,
-    box-shadow       0.35s ease,
-    opacity          0.35s ease,
-    transform        var(--transition) !important;
+    box-shadow       0.35s ease;
 }
 
 html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -231,57 +204,208 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem;
   cursor: pointer;
-  position: relative; overflow: hidden;
-  transition: all var(--transition);
+  /* NO overflow:hidden — it clips the absolutely-positioned icons */
+  position: relative;
+  transition: color var(--transition), border-color var(--transition), background var(--transition), transform var(--transition);
   flex-shrink: 0;
 }
 .theme-toggle:hover {
   color: var(--violet-l);
   border-color: var(--violet);
   background: rgba(139, 92, 246, 0.08);
-  transform: rotate(15deg);
+  transform: rotate(20deg) scale(1.08);
 }
+/* Icons sit in normal flow — only one visible at a time via opacity */
 .theme-toggle .icon-sun,
 .theme-toggle .icon-moon {
+  line-height: 1;
+  transition: opacity 0.25s ease, transform 0.3s ease;
+  /* stack both on top of each other */
   position: absolute;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  top: 50%; left: 50%;
+  transform-origin: center center;
 }
-/* light mode  → show moon (to switch back to dark) */
-/* dark  mode  → show sun  (to switch to light)     */
-[data-theme="dark"]  .icon-sun  { opacity: 1; transform: rotate(0deg);    }
-[data-theme="dark"]  .icon-moon { opacity: 0; transform: rotate(-90deg);  }
-[data-theme="light"] .icon-sun  { opacity: 0; transform: rotate(90deg);   }
-[data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg);    }
+/* DARK mode: show sun icon (click → go light) */
+[data-theme="dark"]  .icon-sun  {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+[data-theme="dark"]  .icon-moon {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+/* LIGHT mode: show moon icon (click → go dark) */
+[data-theme="light"] .icon-sun  {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+[data-theme="light"] .icon-moon {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
 
-/* ── Light theme surface adjustments ── */
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Ocean Indigo
+   Bg:      deep ocean blue-green gradient base
+   Primary: vivid indigo (#4f46e5)
+   Accent:  coral-rose (#f43f5e)
+   Surface: soft sky-white cards on teal-tinted pages
+   ═══════════════════════════════════════════════════════ */
+[data-theme="light"] {
+  /* Page backgrounds — tinted blue-green, not white */
+  --bg:       #dff3f7;   /* soft sky-teal */
+  --bg2:      #c8eaf0;   /* slightly deeper teal */
+  --bg3:      #b2dde7;   /* section contrast */
+  --surface:  #eef9fb;   /* card: near-white with teal tint */
+  --surface2: #d4eef4;   /* subtle inset */
+
+  --border:   rgba(79, 70, 229, 0.18);
+  --border2:  rgba(79, 70, 229, 0.35);
+
+  --text:     #0f172a;   /* near-black */
+  --text2:    #334155;   /* slate */
+  --text3:    #64748b;   /* muted slate */
+
+  /* Accents */
+  --violet:   #4f46e5;   /* indigo */
+  --violet-l: #6366f1;   /* lighter indigo */
+  --cyan:     #0e7490;   /* ocean teal */
+  --cyan-l:   #0891b2;   /* medium teal */
+
+  /* Coral rose for secondary highlights */
+  --rose:     #f43f5e;
+
+  --canvas-opacity: 0.2;
+  --grid-color:     rgba(79, 70, 229, 0.06);
+}
+
+/* ── Light: Page-level backgrounds ── */
+[data-theme="light"] body {
+  background: linear-gradient(160deg, #dff3f7 0%, #c5e8f0 40%, #d4e8fa 100%);
+  background-attachment: fixed;
+}
+[data-theme="light"] body::before {
+  background-image:
+    linear-gradient(rgba(79,70,229,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,70,229,0.06) 1px, transparent 1px);
+}
+
+/* ── Light: Navbar ── */
 [data-theme="light"] .navbar.scrolled {
-  background: rgba(248, 247, 255, 0.92);
+  background: rgba(223, 243, 247, 0.93);
+  box-shadow: 0 1px 0 rgba(79, 70, 229, 0.12);
+  backdrop-filter: blur(20px);
 }
-[data-theme="light"] .loader { background: var(--bg); }
+[data-theme="light"] .nav-logo            { color: #4f46e5; }
+[data-theme="light"] .logo-bracket        { color: #0e7490; }
+[data-theme="light"] .nav-num             { color: #0e7490; }
+[data-theme="light"] .nav-resume-btn      { color: #4f46e5; border-color: rgba(79,70,229,0.35); }
+[data-theme="light"] .nav-resume-btn:hover{ background: rgba(79,70,229,0.08); border-color: #4f46e5; color: #3730a3; }
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.active     { color: #4f46e5 !important; }
+[data-theme="light"] .nav-link::after     { background: #4f46e5; }
+[data-theme="light"] .nav-menu            { background: #eef9fb; }
+
+/* ── Light: Loader ── */
+[data-theme="light"] .loader             { background: #dff3f7; }
+[data-theme="light"] .loader-logo {
+  background: linear-gradient(135deg, #4f46e5, #0e7490);
+  -webkit-background-clip: text; background-clip: text;
+}
+[data-theme="light"] .loader-progress    { background: linear-gradient(90deg, #4f46e5, #0e7490); }
+
+/* ── Light: Hero ── */
 [data-theme="light"] .hero-name {
-  background: linear-gradient(135deg, #1e1b2e 30%, var(--violet-l) 70%, var(--cyan) 100%);
+  background: linear-gradient(135deg, #0f172a 15%, #4f46e5 55%, #0e7490 100%);
   -webkit-background-clip: text; background-clip: text;
 }
-[data-theme="light"] .section-title {
-  background: linear-gradient(135deg, #1e1b2e 60%, var(--violet-l));
-  -webkit-background-clip: text; background-clip: text;
-}
-[data-theme="light"] .pill { background: var(--bg2); }
-[data-theme="light"] .pill.accent { background: rgba(109, 40, 217, 0.08); }
-[data-theme="light"] .project-card { background: var(--surface); }
-[data-theme="light"] .form-control { background: var(--bg2); }
-[data-theme="light"] .contact-form-wrap { background: var(--surface); }
-[data-theme="light"] .sidebar-block { background: var(--surface); }
-[data-theme="light"] .skills-block { background: var(--surface); }
-[data-theme="light"] body::after {
-  background: radial-gradient(circle, rgba(109,40,217,0.07) 0%, transparent 70%);
-}
+[data-theme="light"] .hero-greeting      { color: #0e7490; }
+[data-theme="light"] .role-prefix        { color: #4f46e5; }
+[data-theme="light"] .hero-bio em        { color: #4f46e5; font-weight: 600; }
 [data-theme="light"] .hero::after {
-  background: radial-gradient(circle, rgba(109,40,217,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%);
 }
-[data-theme="light"] .nav-menu {
-  background: var(--surface);
+[data-theme="light"] .scroll-line        { background: linear-gradient(to bottom, #4f46e5, transparent); }
+
+/* ── Light: Buttons ── */
+[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, #4f46e5, #3730a3);
+  box-shadow: 0 0 28px rgba(79,70,229,0.35);
 }
+[data-theme="light"] .btn-primary:hover  { box-shadow: 0 0 48px rgba(79,70,229,0.5); }
+[data-theme="light"] .btn-ghost          { color: #334155; border-color: rgba(79,70,229,0.3); }
+[data-theme="light"] .btn-ghost:hover    { color: #4f46e5; border-color: #4f46e5; background: rgba(79,70,229,0.07); }
+
+/* ── Light: Stats ── */
+[data-theme="light"] .stat-num {
+  background: linear-gradient(135deg, #4f46e5, #0e7490);
+  -webkit-background-clip: text; background-clip: text;
+}
+
+/* ── Light: Section headings ── */
+[data-theme="light"] .section-title {
+  background: linear-gradient(135deg, #0f172a 50%, #4f46e5 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+[data-theme="light"] .section-label      { color: #0e7490; }
+
+/* ── Light: Cursor ── */
+[data-theme="light"] .cursor             { background: #4f46e5; }
+[data-theme="light"] .cursor-follower    { border-color: #6366f1; }
+
+/* ── Light: About ── */
+[data-theme="light"] .avatar-img         { border-color: #4f46e5; }
+[data-theme="light"] .avatar-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(79,70,229,0.18), transparent 70%);
+}
+[data-theme="light"] .about-avatar-card  { background: var(--surface); border-color: rgba(79,70,229,0.2); }
+[data-theme="light"] .about-link:hover   { color: #4f46e5; border-color: rgba(79,70,229,0.35); background: rgba(79,70,229,0.07); }
+
+/* ── Light: Skills ── */
+[data-theme="light"] .skills-block       { background: var(--surface); border-color: rgba(79,70,229,0.15); }
+[data-theme="light"] .pill               { background: var(--bg2); color: #334155; border-color: rgba(79,70,229,0.15); }
+[data-theme="light"] .pill:hover,
+[data-theme="light"] .pill.accent        { background: rgba(79,70,229,0.1); border-color: rgba(79,70,229,0.4); color: #4f46e5; }
+
+/* ── Light: Projects ── */
+[data-theme="light"] .project-card       { background: var(--surface); border-color: rgba(79,70,229,0.15); }
+[data-theme="light"] .project-card:hover { border-color: rgba(79,70,229,0.4); }
+[data-theme="light"] .project-icon-wrap  { background: rgba(79,70,229,0.1); border-color: rgba(79,70,229,0.25); color: #4f46e5; }
+[data-theme="light"] .project-badge      { color: #0e7490; }
+[data-theme="light"] .filter-btn.active  { background: rgba(79,70,229,0.12); border-color: #4f46e5; color: #4f46e5; }
+[data-theme="light"] .filter-btn:hover   { color: #4f46e5; border-color: rgba(79,70,229,0.35); }
+[data-theme="light"] .project-links a    { background: var(--bg2); border-color: rgba(79,70,229,0.15); }
+[data-theme="light"] .project-links a:hover { color: #4f46e5; border-color: #4f46e5; background: rgba(79,70,229,0.08); }
+
+/* ── Light: Experience timeline ── */
+[data-theme="light"] .tl-dot             { border-color: #4f46e5; background: #dff3f7; }
+[data-theme="light"] .timeline-item:hover .tl-dot { background: #4f46e5; box-shadow: 0 0 14px rgba(79,70,229,0.5); }
+[data-theme="light"] .timeline-track::before { background: linear-gradient(to bottom, #4f46e5, transparent); }
+[data-theme="light"] .tl-list li::before { color: #4f46e5; }
+[data-theme="light"] .tl-date            { color: #0e7490; }
+[data-theme="light"] .edu-year           { color: #0e7490; }
+[data-theme="light"] .sidebar-block      { background: var(--surface); border-color: rgba(79,70,229,0.15); }
+[data-theme="light"] .cert-icon          { background: rgba(79,70,229,0.1); color: #4f46e5; }
+[data-theme="light"] .cert-item:hover    { background: var(--bg2); border-color: rgba(79,70,229,0.2); }
+
+/* ── Light: Contact ── */
+[data-theme="light"] .contact-form-wrap  { background: var(--surface); border-color: rgba(79,70,229,0.15); }
+[data-theme="light"] .form-control       { background: var(--bg2); border-color: rgba(79,70,229,0.2); color: var(--text); }
+[data-theme="light"] .form-control:focus { border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79,70,229,0.12); }
+[data-theme="light"] .contact-row-icon   { background: rgba(79,70,229,0.1); border-color: rgba(79,70,229,0.2); color: #4f46e5; }
+[data-theme="light"] .social-btn:hover   { color: #4f46e5; border-color: rgba(79,70,229,0.35); background: rgba(79,70,229,0.08); }
+
+/* ── Light: Footer ── */
+[data-theme="light"] .footer             { border-top-color: rgba(79,70,229,0.15); }
+[data-theme="light"] .footer-logo        { color: #4f46e5; }
+[data-theme="light"] .footer-socials a:hover { color: #4f46e5; }
+
+/* ── Light: Misc ── */
+[data-theme="light"] .scroll-top         { background: var(--surface); border-color: rgba(79,70,229,0.35); color: #4f46e5; }
+[data-theme="light"] .scroll-top:hover   { background: rgba(79,70,229,0.08); border-color: #4f46e5; }
+[data-theme="light"] .toast              { background: var(--surface); border-color: #4f46e5; box-shadow: 0 8px 32px rgba(79,70,229,0.2); }
+[data-theme="light"] .theme-toggle       { background: var(--surface); border-color: rgba(79,70,229,0.35); color: #4f46e5; }
+[data-theme="light"] .theme-toggle:hover { background: rgba(79,70,229,0.1); border-color: #4f46e5; }
 
 .hamburger {
   display: none;
