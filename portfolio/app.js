@@ -1,7 +1,3 @@
-/* ============================================
-   M TARINI PRASAD — PORTFOLIO SCRIPTS
-   ============================================ */
-
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initLoader();
@@ -18,9 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectCardMagnet();
 });
 
-/* ============================================
+/*   
    THEME (dark / light)
-   ============================================ */
+      */
 function initTheme() {
   const saved = localStorage.getItem("theme") || "dark";
   applyTheme(saved);
@@ -48,9 +44,9 @@ function applyTheme(theme) {
   );
 }
 
-/* ============================================
+/*   
    LOADER
-   ============================================ */
+      */
 function initLoader() {
   const loader = document.getElementById("loader");
   const progress = document.getElementById("loaderProgress");
@@ -76,9 +72,9 @@ function initLoader() {
   }, 300);
 }
 
-/* ============================================
+/*   
    CUSTOM CURSOR
-   ============================================ */
+      */
 function initCursor() {
   const cursor = document.getElementById("cursor");
   const follower = document.getElementById("cursorFollower");
@@ -126,9 +122,9 @@ function initCursor() {
     });
 }
 
-/* ============================================
+/*   
    HERO CANVAS — NEURAL NETWORK
-   ============================================ */
+      */
 function initHeroCanvas() {
   const canvas = document.getElementById("heroCanvas");
   if (!canvas) return;
@@ -221,9 +217,9 @@ function initHeroCanvas() {
   })();
 }
 
-/* ============================================
+/*   
    TYPEWRITER
-   ============================================ */
+      */
 function initTypewriter() {
   const el = document.getElementById("heroName");
   if (!el) return;
@@ -238,9 +234,9 @@ function initTypewriter() {
   setTimeout(type, 1500);
 }
 
-/* ============================================
+/*   
    ROLE CYCLE
-   ============================================ */
+      */
 function initRoleCycle() {
   const el = document.getElementById("roleCycle");
   if (!el) return;
@@ -264,9 +260,9 @@ function initRoleCycle() {
   }, 2500);
 }
 
-/* ============================================
+/*   
    NAVBAR
-   ============================================ */
+      */
 function initNavbar() {
   const navbar = document.getElementById("navbar");
   const hamburger = document.getElementById("hamburger");
@@ -313,9 +309,9 @@ function initNavbar() {
   });
 }
 
-/* ============================================
+/*   
    SMOOTH SCROLL
-   ============================================ */
+      */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
@@ -331,9 +327,9 @@ function initSmoothScroll() {
   });
 }
 
-/* ============================================
+/*   
    SCROLL REVEAL
-   ============================================ */
+      */
 function initScrollReveal() {
   const io = new IntersectionObserver(
     (entries) => {
@@ -352,9 +348,9 @@ function initScrollReveal() {
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 }
 
-/* ============================================
+/*   
    PROJECT FILTER
-   ============================================ */
+      */
 function initProjectFilter() {
   const btns = document.querySelectorAll(".filter-btn");
   const cards = document.querySelectorAll(".project-card");
@@ -377,9 +373,9 @@ function initProjectFilter() {
   });
 }
 
-/* ============================================
+/*   
    PROJECT CARD MOUSE-GLOW
-   ============================================ */
+      */
 function initProjectCardMagnet() {
   document.querySelectorAll(".project-card").forEach((card) => {
     card.addEventListener("mousemove", (e) => {
@@ -396,11 +392,6 @@ function initProjectCardMagnet() {
   });
 }
 
-/* ============================================
-   CONTACT FORM — EmailJS
-   Keys are loaded from config.js (gitignored).
-   Commit config.example.js instead.
-   ============================================ */
 function initContactForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;
@@ -448,9 +439,9 @@ function initContactForm() {
   });
 }
 
-/* ============================================
+/*   
    TOAST
-   ============================================ */
+      */
 function showToast(msg, type = "success") {
   const toast = document.getElementById("toast");
   const msgEl = document.getElementById("toastMsg");
@@ -462,9 +453,9 @@ function showToast(msg, type = "success") {
   setTimeout(() => toast.classList.remove("show"), 3500);
 }
 
-/* ============================================
+/*   
    SCROLL TO TOP
-   ============================================ */
+      */
 function initScrollTop() {
   document
     .getElementById("scrollToTop")
@@ -473,9 +464,9 @@ function initScrollTop() {
     );
 }
 
-/* ============================================
+/*   
    RESUME DOWNLOAD CHECK
-   ============================================ */
+      */
 document.getElementById("resumeDownloadBtn")?.addEventListener("click", (e) => {
   fetch("resume.pdf", { method: "HEAD" })
     .then((r) => {
@@ -490,9 +481,9 @@ document.getElementById("resumeDownloadBtn")?.addEventListener("click", (e) => {
     });
 });
 
-/* ============================================
+/*   
    NAV ACTIVE STYLE HELPER
-   ============================================ */
+      */
 const _s = document.createElement("style");
 _s.textContent = `.nav-link.active{color:var(--violet-l)!important}.nav-link.active::after{width:100%!important}`;
 document.head.appendChild(_s);
