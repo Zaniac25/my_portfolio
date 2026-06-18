@@ -87,20 +87,18 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>AI & DEVELOPMENT</h3>
+              <h3>AI & DEV</h3>
               <h4>Description</h4>
               <p>
-                Build intelligent applications, automation tools, computer
-                vision systems and modern web solutions using AI and software
-                development technologies.
+                Building intelligent apps, computer vision systems, and modern
+                web solutions powered by AI.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
                 <div className="what-tags">Python</div>
+                <div className="what-tags">Django</div>
                 <div className="what-tags">JavaScript</div>
                 <div className="what-tags">React</div>
-                <div className="what-tags">HTML</div>
-                <div className="what-tags">CSS</div>
                 <div className="what-tags">MySql</div>
                 <div className="what-tags">Git</div>
                 <div className="what-tags">OpenCV</div>
