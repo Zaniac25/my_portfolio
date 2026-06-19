@@ -208,3 +208,42 @@
     height: auto;
   }
 }
+
+
+.project-links {
+display: flex;
+gap: 12px;
+margin-top: 15px;
+flex-wrap: wrap;
+}
+
+.project-links a {
+text-decoration: none;
+color: white;
+border: 1px solid #444;
+padding: 8px 16px;
+border-radius: 30px;
+font-size: 13px;
+font-weight: 500;
+transition: 0.3s ease;
+background: rgba(255,255,255,0.03);
+}
+
+.project-links a:hover {
+border-color: var(--accentColor);
+color: var(--accentColor);
+box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.project-status {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(255, 180, 0, 0.12);
+  color: #ffb400;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+}
