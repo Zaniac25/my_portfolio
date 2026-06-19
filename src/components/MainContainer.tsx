@@ -9,6 +9,7 @@ import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import setSplitText from "./utils/splitText";
+import { initLenis } from "./utils/lenis";
 
 const TechStack = lazy(() => import("./TechStack"));
 
@@ -18,16 +19,22 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   );
 
   useEffect(() => {
+    const lenis = initLenis();
+
     const resizeHandler = () => {
       setSplitText();
       setIsDesktopView(window.innerWidth > 1024);
     };
+
     resizeHandler();
+
     window.addEventListener("resize", resizeHandler);
+
     return () => {
       window.removeEventListener("resize", resizeHandler);
+      lenis.destroy();
     };
-  }, [isDesktopView]);
+  }, []);
 
   return (
     <div className="container-main">
