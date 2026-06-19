@@ -13,6 +13,8 @@ const projects = [
     category: "AI • Computer Vision",
     tools: "Python, Django, OpenCV, Face Recognition, SQLite, REST API",
     image: "/images/projects/attendance.webp",
+    github: "YOUR_GITHUB_LINK",
+    demo: "",
   },
   {
     number: "02",
@@ -20,6 +22,8 @@ const projects = [
     category: "Data Analytics",
     tools: "Python, Streamlit, Pandas, NumPy, Plotly, Data Cleaning",
     image: "/images/projects/dashboard.webp",
+    github: "YOUR_GITHUB_LINK",
+    demo: "",
   },
   {
     number: "03",
@@ -27,6 +31,8 @@ const projects = [
     category: "AI Business Assistant (In Development)",
     tools: "Python, AI, Business Intelligence, Automation",
     image: "/images/projects/bizbuddy.webp",
+    github: "YOUR_GITHUB_LINK",
+    demo: "",
   },
   {
     number: "04",
@@ -34,6 +40,8 @@ const projects = [
     category: "Computer Vision",
     tools: "Python, OpenCV, MediaPipe, Speech Recognition, PyAutoGUI",
     image: "/images/projects/gesture.webp",
+    github: "YOUR_GITHUB_LINK",
+    demo: "",
   },
   {
     number: "05",
@@ -41,6 +49,8 @@ const projects = [
     category: "Generative AI",
     tools: "Python, Streamlit, Gemini API, Session Memory",
     image: "/images/projects/chatbot.webp",
+    github: "YOUR_GITHUB_LINK",
+    demo: "",
   },
   {
     number: "06",
@@ -48,6 +58,8 @@ const projects = [
     category: "Gaming Website",
     tools: "HTML, CSS, JavaScript, Netlify, GameMonetize",
     image: "/images/projects/ladgames.webp",
+    github: "YOUR_GITHUB_LINK",
+    demo: "",
   },
 ];
 
@@ -111,6 +123,25 @@ const Work = () => {
                 </div>
                 <h4>Tools and features</h4>
                 <p>{project.tools}</p>
+                <div className="project-links">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Demo{" "}
+                    </a>
+                  )}
+                </div>
               </div>
               <WorkImage image={project.image} alt={project.title} />
             </div>
