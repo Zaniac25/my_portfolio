@@ -219,31 +219,74 @@
 h2.landing-info-h2 {
   color: #c481ff;
   font-size: 42px;
-  width: 120%;
+  width: 420px;
+  height: 1.05em;
   margin: 0;
-  font-family: "Geist", sans-serif;
-  font-weight: 600;
-  position: relative;
   margin-left: -5px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "Geist", sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-.landing-h2-2 {
+
+.role {
   position: absolute;
-  top: 0;
-}
-.landing-info-h2::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 120%;
-  z-index: 3;
-  background-image: linear-gradient(
-    0deg,
-    var(--backgroundColor) 40%,
-    rgba(0, 0, 0, 0) 110%
-  );
-  top: 0;
   left: 0;
+  top: 0;
+  display: block;
+  white-space: nowrap;
 }
+
+.role-developer {
+  animation: developerOut 4s ease-in-out infinite;
+}
+
+.role-analyst {
+  animation: analystIn 4s ease-in-out infinite;
+}
+
+@keyframes developerOut {
+  0%,
+  42% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50%,
+  92% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes analystIn {
+  0%,
+  42% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+
+  50%,
+  92% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+}
+
 @media screen and (min-width: 500px) {
   .landing-circle2 {
     display: block;

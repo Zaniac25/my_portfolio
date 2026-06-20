@@ -2,7 +2,7 @@ import Lenis from "lenis";
 
 export const initLenis = () => {
   const lenis = new Lenis({
-    duration: 1.4,
+    duration: 0.6,
     smoothWheel: true,
     wheelMultiplier: 1,
     touchMultiplier: 1.5,

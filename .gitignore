@@ -39,19 +39,10 @@ backup/
 .env.local
 .env.*.local
 
-# Large 3D model files (IMPORTANT - prevents LFS issues)
-*.glb
-*.gltf
-*.hdr
-*.exr
-*.tga
-
-# But keep encrypted model files
-!*.enc
-
-# Specifically ignore decrypted character model
-public/models/character.glb
-models/character.glb
+# Temporary files
+*.tmp
+*.temp
+.cache/
 
 # OS files
 Thumbs.db
@@ -63,12 +54,17 @@ test.js
 *.test.js
 *.spec.js
 
-# Temporary files
-*.tmp
-*.temp
-.cache/
+# Large unused 3D / texture files
+*.gltf
+*.exr
+*.tga
 
-# Package manager locks (optional - keep if you want)
+# Keep required portfolio 3D assets for deployment
+!public/models/character.glb
+!public/models/char_enviorment.hdr
+!public/models/*.enc
+
+# Keep package-lock.json for consistent Netlify builds
 # package-lock.json
 
 # TypeScript declaration files

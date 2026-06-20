@@ -17,12 +17,12 @@ const Landing = ({ children }: PropsWithChildren) => {
           <div className="landing-info">
             <h3>A Creative</h3>
             <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Developer</div>
-              <div className="landing-h2-2">Analyst</div>
+              <span className="role role-developer">Python</span>
+              <span className="role role-analyst">Data</span>
             </h2>
             <h2>
-              <div className="landing-h2-info">Python</div>
-              <div className="landing-h2-info-1">AI</div>
+              <span className="role role-developer">Developer</span>
+              <span className="role role-analyst">Analyst</span>
             </h2>
           </div>
         </div>

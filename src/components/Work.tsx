@@ -91,8 +91,10 @@ const Work = () => {
       trigger: ".work-section",
       start: "top top",
       end: `+=${translateX}`, // Use actual scroll width
-      scrub: true,
+      scrub: 0.3,
       pin: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
       id: "work",
     },
   });
